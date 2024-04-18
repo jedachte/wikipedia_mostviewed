@@ -1,0 +1,9 @@
+# python
+__pycache__/
+.venv
+
+## OSX ##
+.DS_Store
+
+## SQLite ##
+wikipedia_articles.db
