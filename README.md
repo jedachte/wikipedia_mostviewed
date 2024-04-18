@@ -2,7 +2,7 @@
 Python Demo to Extract and Visualize Wikipedia's MostViewed Articles
 
 This Python project mainly uses:
-- Wikipedia API: to extract article information
+- Wikipedia API: to extract articles information
 - SQLite: to store the data in a local file
 - Streamlit: to display data in a web browser
 
@@ -13,6 +13,20 @@ Follow these steps to execute the project:
 2. Create and activate a virtual environment (optional but recommended to avoid conflicts with other Python projects running in your local)
 3. Install requirements (pip install -r requirements.txt)
 4. Execute Streamlit App (streamlit run wikipedia_mostviewed_articles.py)
+
+**Project Structure**
+
+The *wikipedia_mostviewed_articles* python file contains all the functions in the project:
+- *call_wikipedia_api*: a generic function that returns API results in JSON format, requires an api_options parameter to indicate all args necessary along with an optional topic parameter for exception messages purposes.
+- *get_wikipedia_mostviewed_articles*: returns a list of most viewed articles in JSON format, and uses an articles_limit parameter to indicate the number of top articles to retrieve. The Wikipedia API *mostviewed* method is used.
+- *get_last_editor*: returns the last editor name based on the article title indicated as a parameter. The Wikipedia API *revisions* method is used along with newer directory property.
+- *initiate_article_database*: creates database and table for storing the article data using SQLite library.
+- *insert_article_into_db*: inserts records into the article table using SQLite library.
+- *parse_insert_wikipedia_articles*: iterates over the most viewed article list pulling the last editor and the article content in markdown format, and finally inserting the data into the article table using the functions previously defined.
+- *display_data*: uses Streamlit library to display a Pandas dataframe based on the article SQLite table, generating 2 visuals (a summary bar chart and a table with details). Dataframes allow easier graph formatting.
+- *main*: orchestrates the calls to the main functions and informational messages.
+
+The *requirements.txt* file includes the python modules on which this project relies. The dependencies can be installed with pip install -r requirements.txt
 
 **How it looks like**
 
